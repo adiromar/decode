@@ -68,6 +68,68 @@
                                         </div>
                                     </div>
 
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Email</label></div>
+                                        <div class="col-12 col-md-9"><input type="email" id="password-input" name="email" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group pb-3">
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Address</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="password-input" name="address" class="form-control">
+                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
+                                        </div>
+                                    </div>
+
+                                    <hr>
+
+                                    <div class="row form-group pt-3">
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Refering Physician</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="refering_physician" placeholder="Refering Physician" class="form-control">
+                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Specimen</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="specimen"  class="form-control">
+                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Specimen Collection Site</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="specimen_coll_site"  class="form-control">
+                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Specimen Collection Date</label></div>
+                                        <div class="col-12 col-md-9"><input type="date" name="specimen_coll_date"  class="form-control">
+                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Specimen Collection Time</label></div>
+                                        <div class="col-12 col-md-9"><input type="datetime-local" name="specimen_coll_time" class="form-control">
+                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Reporting Date</label></div>
+                                        <div class="col-12 col-md-9"><input type="date" name="reporting_date" class="form-control">
+                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Reporting Time</label></div>
+                                        <div class="col-12 col-md-9"><input type="datetime-local" name="reporting_time" class="form-control">
+                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
+                                        </div>
+                                    </div>
+
                                     
                                     {{-- <div class="row"> --}}
                                         <button type="submit" class="btn btn-primary">Submit</button>

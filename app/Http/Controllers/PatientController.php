@@ -55,6 +55,16 @@ class PatientController extends Controller
         $pat->patient_age = $request->patient_age;
         $pat->gender = $request->gender;
         $pat->phone = $request->phone;
+        $pat->email = $request->email;
+        $pat->address = $request->address;
+
+        $pat->refering_physician = $request->refering_physician;
+        $pat->specimen = $request->specimen;
+        $pat->specimen_coll_site = $request->specimen_coll_site;
+        $pat->specimen_coll_date = $request->specimen_coll_date;
+        $pat->specimen_coll_time = $request->specimen_coll_time;
+        $pat->reporting_date = $request->reporting_date;
+        $pat->reporting_time = $request->reporting_time;
 
         $pat->save();
 
@@ -84,7 +94,7 @@ class PatientController extends Controller
         $patient = Patient::findorfail($id);
         
         $title = 'Edit Patients Information';
-        return view('admin.editPatient', compact('title','patient'));
+        return view('patient.edit', compact('title','patient'));
     }
 
     /**
@@ -110,16 +120,25 @@ class PatientController extends Controller
         $pat->patient_age = $request->patient_age;
         $pat->gender = $request->gender;
         $pat->phone = $request->phone;
-
+        $pat->email = $request->email;
+        $pat->address = $request->address;
+        
         $pat->result = $request->result;
         $pat->e_gene = $request->e_gene;
         $pat->n_gene = $request->n_gene;
         $pat->orf_lb = $request->orf_lb;
-
+        
+        $pat->refering_physician = $request->refering_physician;
+        $pat->specimen = $request->specimen;
+        $pat->specimen_coll_site = $request->specimen_coll_site;
+        $pat->specimen_coll_date = $request->specimen_coll_date;
+        $pat->specimen_coll_time = $request->specimen_coll_time;
+        $pat->reporting_date = $request->reporting_date;
+        $pat->reporting_time = $request->reporting_time;
         $pat->save();
 
         Session::flash('success', 'Succesfully Updated Patient Information.');
-        return view('admin');
+        return redirect()->back();
     }
 
     /**
@@ -130,6 +149,11 @@ class PatientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $patient = Patient::find($id);
+        $patient->delete();
+
+        Session::flash('success', 'Succesfully Removed Patient Information.');
+
+        return redirect()->back();
     }
 }

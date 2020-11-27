@@ -10,7 +10,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'COVID-19 Patients Database') }}</title>
+    <title>{{ $title }}</title>
 
     {{-- <title>COVID-19 Patients Database</title> --}}
     <meta name="description" content="Admin -  Admin Template">

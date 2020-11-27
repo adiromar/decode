@@ -18,7 +18,15 @@
                     </ul>
                 </li>
 
-            
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-file"></i>
+                        Patient's Report
+                    </a>
+                    <ul class="sub-menu children dropdown-menu">                            
+                    <li><i class="fa fa-id-badge"></i><a href="{{ route('report.index') }}">View Report</a></li>
+                    </ul>
+                </li>
+                
                 @if(Auth::user()->roles()->first()->role == 'Admin')
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-users"></i>
@@ -30,6 +38,8 @@
                     </ul>
                 </li>
                 @endif
+
+                
                 
             </ul>
         </div><!-- /.navbar-collapse -->

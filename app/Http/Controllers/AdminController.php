@@ -24,9 +24,10 @@ class AdminController extends Controller
     public function index(){
         $title = 'Dashboard';
         $patient = Patient::get();
-        $count = $patient->count();
+        $p_count = $patient->count();
+        $data['p_count'] = $p_count;
 
-        return view('admin.index', compact('title','patient','count'));
+        return view('admin.index', compact('title','patient','data'));
     }
 
     public function printPdf(Request $request, $id){
@@ -38,14 +39,9 @@ class AdminController extends Controller
         // return $pdf->download('invoice.pdf');
 
         $data['patient'] = Patient::find($id);
-        // $data = $item;
 
-        // dd($data);
-        // if($request->has('download')){
-            $pdf = PDF::loadView('admin.pdfview', $data);
-            // return $pdf->download('patient_report.pdf');
-            return $pdf->stream();
-            // }
+        $pdf = PDF::loadView('admin.pdfview', $data);
+        return $pdf->stream();
         // return view('admin.pdfview')->with($data);
     }
 

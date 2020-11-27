@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use Db;
+use DB;
 use Auth;
+use Session;
 
 class UserController extends Controller
 {
@@ -175,6 +176,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        DB::table('role_user')->where('user_id', $id)->delete();
+
+        Session::flash('success', 'Succesfully Removed User.');
+
+        return redirect()->back();
     }
 }

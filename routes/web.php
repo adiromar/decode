@@ -37,9 +37,10 @@ function(){
 
     Route::get('/printPdf/{id}', 'AdminController@printPdf')->name('print_pdf');
     Route::get('/downloadPdf/{id}', 'AdminController@downloadPdf')->name('down_pdf');
-    Route::get('/pdfview', 'AdminController@testpdf')->name('pdfview');
+    // Route::get('/pdfview', 'AdminController@testpdf')->name('pdfview');
 
     Route::resource('user', 'UserController');
+    Route::resource('report', 'ReportController');
     
 });
 

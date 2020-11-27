@@ -65,8 +65,15 @@
                             <td>{{ $user->created_at }}</td>
                             
                             <td>
-                            <a href="{{ route('user.edit', $user->id) }}" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i></a>
-                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                <a href="{{ route('user.edit', $user->id) }}" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i></a>
+                                {{-- <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a> --}}
+                                <form action="{{route('user.destroy', $user->id)}}" onclick="event.preventDefault();
+                                    var r=confirm('Are you sure you want to delete this item?');
+                                    if(r== true){ this.submit(); }" method="post">
+                                    {{ csrf_field() }}
+                                    {{ method_field('delete') }}
+                                    <input type="submit" class="btn btn-danger btn-sm mt-2" value="Delete">
+                                    </form>
                             </td>
                         </tr>
                         @php

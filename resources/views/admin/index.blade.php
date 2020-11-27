@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="stat-content">
                                     <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{ $count }}</span></div>
+                                        <div class="stat-text"><span class="count">{{ $data['p_count'] }}</span></div>
                                         <div class="stat-heading">Patients</div>
                                     </div>
                                 </div>
@@ -61,7 +61,7 @@
                                 <div class="stat-content">
                                     <div class="text-left dib">
                                         <div class="stat-text"><span class="count">112</span></div>
-                                        <div class="stat-heading">Reports Added</div>
+                                        <div class="stat-heading">Reports Sumbitted</div>
                                     </div>
                                 </div>
                             </div>

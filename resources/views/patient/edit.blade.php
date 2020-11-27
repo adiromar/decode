@@ -84,19 +84,34 @@
                                     </div>
 
                                     <div class="row form-group">
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Email</label></div>
+                                        <div class="col-12 col-md-9"><input type="email" id="password-input" name="email" value="{{ $patient->email }}" class="form-control">
+                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
                                         <div class="col col-md-3"><label for="password-input" class=" form-control-label">Phone</label></div>
                                         <div class="col-12 col-md-9"><input type="text" id="password-input" name="phone" value="{{ $patient->phone }}" class="form-control">
                                             {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
                                         </div>
                                     </div>
 
-                                    <div class="row form-group">
+                                    <div class="row form-group pb-3">
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Address</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="password-input" name="address" value="{{ $patient->address }}" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <hr>
+
+                                    <div class="row form-group pt-3">
                                         <div class="col col-md-3"><label for="password-input" class=" form-control-label">Result</label></div>
                                         <div class="col-12 col-md-9">
                                             {{-- <input type="text" id="password-input" name="result" value="{{ $patient->result }}" class="form-control"> --}}
                                             <select class="form-control" name="result">
-                                                <option value="0" {{ $patient->result == 0 ? 'selected' : ''}}>NEGATIVE</option>
-                                                <OPTION value="1" {{ $patient->result == 1 ? 'selected' : ''}}>POSITIVE</OPTION>
+                                                <option value="N" {{ $patient->result == 'N' ? 'selected' : ''}}>NEGATIVE</option>
+                                                <OPTION value="P" {{ $patient->result == 'P' ? 'selected' : ''}}>POSITIVE</OPTION>
                                             </select>
                                         </div>
                                     </div>
@@ -110,14 +125,61 @@
 
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="password-input" class=" form-control-label">N-GENE</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="password-input" name="n_gene" value="{{ $patient->n_gene }}" class="form-control">
+                                        <div class="col-12 col-md-9"><input type="text"  name="n_gene" value="{{ $patient->n_gene }}" class="form-control">
                                             {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
                                         </div>
                                     </div>
 
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="password-input" class=" form-control-label">ORF LB</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="password-input" name="orf_lb" value="{{ $patient->orf_lb }}" class="form-control">
+                                        <div class="col-12 col-md-9"><input type="text" name="orf_lb" value="{{ $patient->orf_lb }}" class="form-control">
+                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Refering Physician</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="refering_physician" value="{{ $patient->refering_physician }}" class="form-control">
+                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Specimen</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="specimen" value="{{ $patient->specimen }}" class="form-control">
+                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Specimen Collection Site</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="specimen_coll_site" value="{{ $patient->specimen_coll_site }}" class="form-control">
+                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Specimen Collection Date</label></div>
+                                        <div class="col-12 col-md-9"><input type="date" name="specimen_coll_date" value="{{ $patient->specimen_coll_date }}" class="form-control">
+                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Specimen Collection Time</label></div>
+                                        <div class="col-12 col-md-9"><input type="datetime-local" name="specimen_coll_time" value="{{ $patient->specimen_coll_time }}" class="form-control">
+                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Reporting Date</label></div>
+                                        <div class="col-12 col-md-9"><input type="date" name="reporting_date" value="{{ $patient->reporting_date }}" class="form-control">
+                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Reporting Time</label></div>
+                                        <div class="col-12 col-md-9"><input type="datetime-local" name="reporting_time" value="{{ $patient->reporting_time }}" class="form-control">
                                             {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
                                         </div>
                                     </div>
