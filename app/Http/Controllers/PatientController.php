@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Patient;
 use Session;
 use Image;
+use Auth;
 
 class PatientController extends Controller
 {
@@ -17,7 +18,15 @@ class PatientController extends Controller
     public function index()
     {
         $title = 'Patients Information';
-        $patient = Patient::get();
+
+        $user_id = Auth::user()->id;
+
+        if(Auth::user()->roles()->first()->role == 'User'):
+            $patient = Patient::where('user_id', $user_id)->get();
+        else:
+            $patient = Patient::get();
+        endif;
+        
 
         return view('patient.index', compact('title','patient'));
     }
@@ -65,6 +74,7 @@ class PatientController extends Controller
         $pat->specimen_coll_time = $request->specimen_coll_time;
         $pat->reporting_date = $request->reporting_date;
         $pat->reporting_time = $request->reporting_time;
+        $pat->user_id = Auth::user()->id;
 
         $pat->save();
 
