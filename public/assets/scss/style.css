@@ -613,7 +613,9 @@ aside.left-panel {
       .navbar .navbar-nav > li.active {
         background: #fafafa; }
     .navbar .navbar-nav li {
-      width: 100%; }
+      width: 100%;
+      
+     }
       .navbar .navbar-nav li.active .menu-icon, .navbar .navbar-nav li:hover .toggle_nav_button:before,
       .navbar .navbar-nav li .toggle_nav_button.nav-open:before {
         color: #03a9f3; }

@@ -16,7 +16,7 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $title = 'Report';
+        $title = 'Patient Report';
         $patient = Patient::where('result', 'N')->orWhere('result', 'P')->get();
 
         return view('report.index', compact('title','patient'));

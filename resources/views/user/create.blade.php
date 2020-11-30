@@ -5,6 +5,20 @@
 @endsection --}}
 
 @section('content')
+
+{{-- custom breadcrumb --}}
+<div class="custom-bread">
+    <div class="">
+        <div class="brd">
+            <ol class="breadcrumb">
+                <li><a href="{{ url('/admin') }}" class="adm-link"><i class="fa fa-home"></i> Home </a></li>
+                <li><span class="ml-2 mr-2"><i class="fa fa-angle-right"></i></span></li>
+                <li class="active"> {{ $title }}</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
           <!-- Content -->
           <div class="content">
             <!-- Animated -->

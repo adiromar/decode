@@ -1,200 +1,214 @@
 @extends('inc.app')
 
+{{-- @section('head')
+    @include('layouts.head')
+@endsection --}}
 
 @section('content')
-     <!-- Breadcrumbs-->
-     <div class="breadcrumbs">
-        <div class="breadcrumbs-inner">
-            <div class="row m-0">
-                <div class="col-sm-4">
-                    <div class="page-header float-left">
-                        <div class="page-title">
-                            <h1>{{ $title }}</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-8">
-                    <div class="page-header float-right">
-                        <div class="page-title">
-                            <ol class="breadcrumb text-right">
-                                <li><a href="{{ url('/admin') }}">Dashboard</a></li>
-                                <li class="active">{{ $title }}</li>
-                            </ol>
-                        </div>
-                    </div>
+        {{-- custom breadcrumb --}}
+        <div class="custom-bread">
+            <div class="">
+                <div class="brd">
+                    <ol class="breadcrumb">
+                        <li><a href="{{ url('/admin') }}" class="adm-link"><i class="fa fa-home"></i> Home </a></li>
+                        <li><span class="ml-2 mr-2"><i class="fa fa-angle-right"></i></span></li>
+                        <li class="active"> {{ $title }}</li>
+                    </ol>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- /.breadcrumbs-->
 
-    <!-- Content -->
-    <div class="content">
-        <!-- Animated -->
-        <div class="animated fadeIn">
-            <!-- Widgets  -->
-            <div class="row">
 
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong class="card-title">{{ $title }}</strong>
-                        </div>
+          <!-- Content -->
+          <div class="content">
+            <!-- Animated -->
+            <div class="animated fadeIn">
+                <!-- Widgets  -->
+                <div class="main-content">
+                    <h1>Patient Database Form</h1>
 
-                        <div class="card-body card-block">
-                            <form action="{{ route('patient.update', $patient->id) }}" method="POST" enctype="multipart/form-data" class="form-horizontal">
-                                {{ csrf_field() }}
-                                {{ method_field('PATCH') }}
-                                
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Lab ID</label></div>
-                                    <div class="col-12 col-md-9"><input type="text" id="text-input" name="lab_id" value="{{ $patient->lab_id }}" class="form-control">
-                                            {{-- <small class="form-text text-muted">This is a help text</small> --}}
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="email-input" class=" form-control-label">Patient Name</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="email-input" name="patient_name" value="{{ $patient->patient_name }}" class="form-control">
-                                            {{-- <small class="help-block form-text">Please enter your email</small> --}}
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Age</label></div>
-                                    <div class="col-12 col-md-9"><input type="number" id="password-input" name="patient_age" class="form-control" value="{{ $patient->patient_age }}">
-                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
-                                        </div>
-                                    </div>
+                    <div class="row pt-3">
+                        <div class="col-md-12 col-12">
+                            <div class="widget-box">
+                                <div class="widget-header">
+                                    <h4 class="widget-title lighter">{{ $title }}</h4>
+                                </div>
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <form action="{{ route('patient.update', $patient->id) }}" method="post" enctype="multipart/form-data" class="">
+                                            {{ csrf_field() }}
+                                            {{ method_field('PATCH')}}
 
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label class=" form-control-label">Gender</label></div>
-                                        <div class="col col-md-9">
-                                            <div class="form-check">
-                                                <div class="radio">
-                                                    <label for="radio1" class="form-check-label ">
-                                                        <input type="radio" id="radio1" name="gender" value="male" class="form-check-input" <?php echo ($patient->gender =='male') ? 'checked':'' ?>>Male
-                                                    </label>
+                                            <div class="form-horizontal">
+
+                                                <div class="row form-group">
+                                                    <div class="col-md-3">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Lab Id</label>
+                                                            <input type="text" name="lab_id" value="{{ $patient->lab_id }}" class="input-sm">
+                                                            </div>
+
+                                                            <div class="col-md-6">
+                                                                <label>Patient Name</label>
+                                                                <input type="text" name="patient_name" class="input-sm" value="{{ $patient->patient_name }}" >
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Patient's Age</label>
+                                                                <input type="number" name="patient_age" value="{{ $patient->patient_age }}" class="input-sm">
+                                                            </div>
+
+                                                            <div class="col-md-6">
+                                                                <label>Gender </label>
+                                                                <div class="form-check">
+                                                                    <div class="radio">
+                                                                        <label for="radio1" class="form-check-label ">
+                                                                            <input type="radio" id="radio1" name="gender" value="male" class="form-check-input" {{ $patient->gender == 'male' ? 'checked' : '' }}>Male
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="radio">
+                                                                        <label for="radio2" class="form-check-label ">
+                                                                            <input type="radio" id="radio2" name="gender" value="female" class="form-check-input" {{ $patient->gender == 'female' ? 'checked' : '' }}>Female
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-2">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Phone</label>
+                                                                <input type="text" name="phone" value="{{ $patient->phone }}" class="input-sm">
+                                                            </div>
+
+                                                            
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Email</label>
+                                                                <input type="text" name="email" class="input-sm" value="{{ $patient->email }}">
+                                                            </div>
+
+                                                            <div class="col-md-6">
+                                                                <label>Address</label>
+                                                                <input type="text" name="address" value="{{ $patient->address }}" class="input-sm">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
                                                 </div>
-                                                <div class="radio">
-                                                    <label for="radio2" class="form-check-label ">
-                                                        <input type="radio" id="radio2" name="gender" value="female" class="form-check-input" <?php echo ($patient->gender =='female') ? 'checked':'' ?>>Female
-                                                    </label>
+
+                                                <div class="row form-group">
+                                                    <div class="col-md-3">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Refering Physician</label>
+                                                                <input type="text" name="refering_physician" value="{{ $patient->refering_physician }}" class="input-sm">
+                                                            </div>
+
+                                                            <div class="col-md-6">
+                                                                <label>Specimen</label>
+                                                                <input type="text" name="specimen" value="{{ $patient->specimen }}" class="input-sm">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Specimen Collection Site</label>
+                                                                <input type="text" name="specimen_coll_site" value="{{ $patient->specimen_coll_site }}" class="input-sm">
+                                                            </div>
+
+                                                            <div class="col-md-6">
+                                                                <label>Specimen Collection Date</label>
+                                                                <input type="date" name="specimen_coll_date" value="{{ $patient->specimen_coll_date }}" class="input-sm">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-5">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>Specimen Collection Time</label>
+                                                                <input type="datetime-local" name="specimen_coll_time" value="{{ $patient->specimen_coll_time }}" class="input-sm">
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <label>Reporting Date</label>
+                                                                <input type="date" name="reporting_date" class="input-sm" value="{{ $patient->reporting_date }}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
+
+                                                <hr>
+                                                <div class="row form-group">
+                                                    <div class="col-md-3">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>COVID-19 Result <span class="req_red">*</span></label>
+                                                                <select name="result" class="input-sm" required>
+                                                                    <option>-</option>
+                                                                    <option value="N" {{ $patient->result == 'N' ? 'selected' : '' }}>NEGATIVE</option>
+                                                                    <option value="P" {{ $patient->result == 'P' ? 'selected' : '' }}>POSITIVE</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>E-GENE</label>
+                                                                <input type="text" name="e_gene" value="{{ $patient->e_gene }}" class="input-sm">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label>N-GENE</label>
+                                                                <input type="text" name="n_gene" value="{{ $patient->n_gene }}" class="input-sm">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>ORF Lab</label>
+                                                                <input type="text" name="orf_lb" value="{{ $patient->orf_lb }}" class="input-sm">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="row pb-4">
+                                                    <div class="col-md-10 col-12">
+                                                        <input type="submit" class="btn btn-secondary btn-sm ml-2" value="Update">
+                                                    </div>
+                                                </div>
+
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
+                                </div>
 
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Email</label></div>
-                                        <div class="col-12 col-md-9"><input type="email" id="password-input" name="email" value="{{ $patient->email }}" class="form-control">
-                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
-                                        </div>
-                                    </div>
-
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Phone</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="password-input" name="phone" value="{{ $patient->phone }}" class="form-control">
-                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
-                                        </div>
-                                    </div>
-
-                                    <div class="row form-group pb-3">
-                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Address</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="password-input" name="address" value="{{ $patient->address }}" class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <hr>
-
-                                    <div class="row form-group pt-3">
-                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Result</label></div>
-                                        <div class="col-12 col-md-9">
-                                            {{-- <input type="text" id="password-input" name="result" value="{{ $patient->result }}" class="form-control"> --}}
-                                            <select class="form-control" name="result">
-                                                <option value="N" {{ $patient->result == 'N' ? 'selected' : ''}}>NEGATIVE</option>
-                                                <OPTION value="P" {{ $patient->result == 'P' ? 'selected' : ''}}>POSITIVE</OPTION>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">E-GENE</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="e_gene" value="{{ $patient->e_gene }}" class="form-control">
-                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
-                                        </div>
-                                    </div>
-
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">N-GENE</label></div>
-                                        <div class="col-12 col-md-9"><input type="text"  name="n_gene" value="{{ $patient->n_gene }}" class="form-control">
-                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
-                                        </div>
-                                    </div>
-
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">ORF LB</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="orf_lb" value="{{ $patient->orf_lb }}" class="form-control">
-                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
-                                        </div>
-                                    </div>
-
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Refering Physician</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="refering_physician" value="{{ $patient->refering_physician }}" class="form-control">
-                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
-                                        </div>
-                                    </div>
-
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Specimen</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="specimen" value="{{ $patient->specimen }}" class="form-control">
-                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
-                                        </div>
-                                    </div>
-
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Specimen Collection Site</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="specimen_coll_site" value="{{ $patient->specimen_coll_site }}" class="form-control">
-                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
-                                        </div>
-                                    </div>
-
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Specimen Collection Date</label></div>
-                                        <div class="col-12 col-md-9"><input type="date" name="specimen_coll_date" value="{{ $patient->specimen_coll_date }}" class="form-control">
-                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Specimen Collection Time</label></div>
-                                        <div class="col-12 col-md-9"><input type="datetime-local" name="specimen_coll_time" value="{{ $patient->specimen_coll_time }}" class="form-control">
-                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
-                                        </div>
-                                    </div>
-
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Reporting Date</label></div>
-                                        <div class="col-12 col-md-9"><input type="date" name="reporting_date" value="{{ $patient->reporting_date }}" class="form-control">
-                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Reporting Time</label></div>
-                                        <div class="col-12 col-md-9"><input type="datetime-local" name="reporting_time" value="{{ $patient->reporting_time }}" class="form-control">
-                                            {{-- <small class="help-block form-text">Please enter a complex password</small> --}}
-                                        </div>
-                                    </div>
-
-                                    
-                                    {{-- <div class="row"> --}}
-                                        <button type="submit" class="btn btn-primary">Update</button>
-                                    {{-- </div> --}}
-                                </form>
                             </div>
 
+                        </div>
                     </div>
                 </div>
 
+
             </div>
-        </div>
-    </div>
+          </div>
 @endsection
+

@@ -4,12 +4,12 @@
     <nav class="navbar navbar-expand-sm navbar-default">
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li>
-                <a href="{{ url('/admin') }}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
+                <li class="bdr-li">
+                <a href="{{ url('/admin') }}"><i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                 </li>
-                <li class="menu-title">Menu</li><!-- /.menu-title -->
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>
+                <li class="menu-title bdr-li">Menu</li><!-- /.menu-title -->
+                <li class="menu-item-has-children dropdown bdr-li">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop mr-3"></i>
                         Patient Information
                     </a>
                     <ul class="sub-menu children dropdown-menu">                            
@@ -18,8 +18,8 @@
                     </ul>
                 </li>
 
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-file"></i>
+                <li class="menu-item-has-children dropdown bdr-li">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-file mr-3"></i>
                         Patient's Report
                     </a>
                     <ul class="sub-menu children dropdown-menu">                            
@@ -28,8 +28,8 @@
                 </li>
                 
                 @if(Auth::user()->roles()->first()->role == 'Admin')
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-users"></i>
+                <li class="menu-item-has-children dropdown bdr-li">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-users mr-3"></i>
                         User Management
                     </a>
                     <ul class="sub-menu children dropdown-menu">                            
@@ -39,6 +39,9 @@
                 </li>
                 @endif
 
+                <li class="menu-item bdr-li">
+                    <a id="menuToggle" class="menutoggle"><i class="menu-icon fa fa-angle-double-right"></i></a>
+                </li>
                 
                 
             </ul>

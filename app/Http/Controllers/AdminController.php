@@ -52,4 +52,12 @@ class AdminController extends Controller
         $pdf = PDF::loadView('admin.pdfview', $data);
         return $pdf->download($n);
     }
+
+    public function printhtml(Request $request){
+        $data['patient'] = Patient::find($id);
+        $n = time() . 'patient_report.pdf';
+        $homepage = file_get_contents('filename.txt');
+
+        return view('admin.pdfview', compact('data'));
+    }
 }
